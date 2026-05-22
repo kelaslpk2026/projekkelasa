@@ -6,14 +6,14 @@ number = st.number_input("Masukkan Angka",min_value=0)
 satu,dua,tiga,empat,lima=st.columns(5)
 if satu.button("Faktorial"):
     number = int(number)
-    st.write(math.factorial(number))
+    st.subheader(math.factorial(number))
 elif dua.button("Akar Kuadrat"):
-    st.write(math.sqrt(number))
+    st.subheader(math.sqrt(number))
 elif tiga.button("Kuadrat") :
-    st.write(number**2)
+    st.subheader(number**2)
 elif empat.button("Logaritma") :
-    st.write(math.log(number))
+    st.subheader(math.log(number))
 elif lima.button("Ln"):
-    st.write(math.ln(number))
+    st.subheader(math.ln(number))
 if st.button("reset"):
     st.rerun()
