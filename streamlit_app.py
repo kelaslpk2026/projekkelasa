@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.title("🎈 Projek Kelas A")
+st.title("🎈:blue Projek Kelas A")
 import streamlit as st
 
 st.markdown("*Streamlit* is **really** ***cool***.")
