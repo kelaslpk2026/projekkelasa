@@ -1,16 +1,19 @@
 import streamlit as st
 
-st.title("🎈 Projek Kelas A")
+st.title(":blue[Kalkulator Aritmatika Kelas A]:rocket:")
 st.markdown(st.header("*Kalkulator*  **Aritmatika** ***Sederhana***."))
-st.markdown(st.subheader('''
-    :red[Streamlit] :orange[can] :green[write] :blue[text] :violet[in]
-    :gray[pretty] :rainbow[colors] and :blue-background[highlight] text.'''))
-st.markdown("Here's a bouquet &mdash;\
-            :tulip::cherry_blossom::rose::hibiscus::sunflower::blossom:")
-
-multi = '''If you end a line with two spaces,
-a soft return is used for the next line.
-
-Two (or more) newline characters in a row will result in a hard return.
-'''
-st.markdown(multi)
+number = st.number_input("Masukkan Angka",min_value=0)
+satu,dua,tiga,empat,lima=st.columns(5)
+if satu.button("Faktorial"):
+    number = int(number)
+    st.write(math.factorial(number))
+elif dua.button("Akar Kuadrat"):
+    st.write(math.sqrt(number))
+elif tiga.button("Kuadrat") :
+    st.write(number**2)
+elif empat.button("Logaritma") :
+    st.write(math.log(number))
+elif lima.button("Ln"):
+    st.write(math.ln(number))
+if st.button("reset"):
+    st.rerun()
