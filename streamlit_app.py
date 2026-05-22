@@ -1,7 +1,7 @@
 import streamlit as st
 
 st.title(":blue[Kalkulator Aritmatika Kelas A]:rocket:")
-st.markdown(st.header("*Kalkulator*  **Aritmatika** ***Sederhana***."))
+st.header("*Kalkulator*  **Aritmatika** ***Sederhana***.")
 number = st.number_input("Masukkan Angka",min_value=0)
 satu,dua,tiga,empat,lima=st.columns(5)
 if satu.button("Faktorial"):
