@@ -1,12 +1,14 @@
 import streamlit as st
 
-st.title("🎈:blue Projek Kelas A")
+st.title("🎈 Projek Kelas A")
 import streamlit as st
 
+
+
 st.markdown("*Streamlit* is **really** ***cool***.")
-st.markdown('''
+st.markdown(st.subheader('''
     :red[Streamlit] :orange[can] :green[write] :blue[text] :violet[in]
-    :gray[pretty] :rainbow[colors] and :blue-background[highlight] text.''')
+    :gray[pretty] :rainbow[colors] and :blue-background[highlight] text.'''))
 st.markdown("Here's a bouquet &mdash;\
             :tulip::cherry_blossom::rose::hibiscus::sunflower::blossom:")
 
