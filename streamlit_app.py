@@ -1,11 +1,7 @@
 import streamlit as st
 
 st.title("🎈 Projek Kelas A")
-import streamlit as st
-
-
-
-st.markdown("*Streamlit* is **really** ***cool***.")
+st.markdown(st.header("*Kalkulator*  **Aritmatika** ***Sederhana***."))
 st.markdown(st.subheader('''
     :red[Streamlit] :orange[can] :green[write] :blue[text] :violet[in]
     :gray[pretty] :rainbow[colors] and :blue-background[highlight] text.'''))
