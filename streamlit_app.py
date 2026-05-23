@@ -52,4 +52,15 @@ if "messages" not in st.session_state:
 for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(
         msg["content"])
+# ❌ Deprecated
+st.experimental_rerun()
+
+# ✅ Gunakan ini
+st.rerun()
+# Simpan riwayat chat
+if "messages" not in st.session_state:
+    st.session_state.messages = []
+
+st.session_state.messages.append(
+    {"role":"user", "content": prompt})
 
