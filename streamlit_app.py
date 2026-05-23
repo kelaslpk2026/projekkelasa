@@ -53,7 +53,7 @@ for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(
         msg["content"])
 # ❌ Deprecated
-st.experimental_rerun()
+st.rerun()
 
 # ✅ Gunakan ini
 st.rerun()
