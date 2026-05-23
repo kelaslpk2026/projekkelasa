@@ -11,21 +11,27 @@ USERS = {
     "user": "abcde"
 }
 
+# Dummy chatbot
+def finance_bot(prompt):
+    return f"FinanceBot menjawab: {prompt}"
+
+# Session state
+if "authenticated" not in st.session_state:
+    st.session_state.authenticated = False
+
+if "messages" not in st.session_state:
+    st.session_state.messages = []
+
 # UI
 st.title("📊 Dashboard")
 st.header("Laporan Bulanan")
 st.subheader("📈 Monthly Expenses")
 st.caption("Made with ❤️ using Streamlit")
 
-# Session state
-if "authenticated" not in st.session_state:
-    st.session_state.authenticated = False
-
-# Input login
+# Login
 username = st.text_input("Username")
 password = st.text_input("Password", type="password")
 
-# Login button
 if st.button("Login"):
     if USERS.get(username) == password:
         st.session_state.authenticated = True
@@ -37,30 +43,44 @@ if st.button("Login"):
 
 # Setelah login
 if st.session_state.authenticated:
+
     st.write(f"Selamat datang, {st.session_state.username}")
 
-# Finance Chatbot — app.py baris 97–103
-st.chat_message("assistant").write("Hi! Saya FinanceBot.")
+    st.chat_message("assistant").write(
+        "Hi! Saya FinanceBot."
+    )
 
-if prompt := st.chat_input("Tulis pertanyaan Anda..."):
-    st.chat_message("user").write(prompt)
-    response = finance_bot(prompt, st.session_state.data)
-    st.chat_message("assistant").write(response)
-if "messages" not in st.session_state:
-    st.session_state.messages = []
+    # Tampilkan history
+    for msg in st.session_state.messages:
+        st.chat_message(msg["role"]).write(
+            msg["content"]
+        )
 
-for msg in st.session_state.messages:
-    st.chat_message(msg["role"]).write(
-        msg["content"])
-# ❌ Deprecated
-st.rerun()
+    # Input chat
+    prompt = st.chat_input(
+        "Tulis pertanyaan Anda..."
+    )
 
-# ✅ Gunakan ini
-st.rerun()
-# Simpan riwayat chat
-if "messages" not in st.session_state:
-    st.session_state.messages = []
+    if prompt:
 
-st.session_state.messages.append(
-    {"role":"user", "content": prompt})
+        # Simpan user message
+        st.session_state.messages.append(
+            {
+                "role": "user",
+                "content": prompt
+            }
+        )
 
+        st.chat_message("user").write(prompt)
+
+        # Bot response
+        response = finance_bot(prompt)
+
+        st.session_state.messages.append(
+            {
+                "role": "assistant",
+                "content": response
+            }
+        )
+
+        st.chat_message("assistant").write(response)
