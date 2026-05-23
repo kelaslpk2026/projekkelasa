@@ -5,6 +5,11 @@ st.set_page_config(
     layout="wide"
 )
 
+option = st.selectbox(
+    "How would you like to be contacted?",
+    ("Email", "Home phone", "Mobile phone"),
+)
+
 # Dummy database user
 USERS = {
     "admin": "12345",
