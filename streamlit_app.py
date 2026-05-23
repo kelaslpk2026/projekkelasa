@@ -38,3 +38,18 @@ if st.button("Login"):
 # Setelah login
 if st.session_state.authenticated:
     st.write(f"Selamat datang, {st.session_state.username}")
+
+# Finance Chatbot — app.py baris 97–103
+st.chat_message("assistant").write("Hi! Saya FinanceBot.")
+
+if prompt := st.chat_input("Tulis pertanyaan Anda..."):
+    st.chat_message("user").write(prompt)
+    response = finance_bot(prompt, st.session_state.data)
+    st.chat_message("assistant").write(response)
+if "messages" not in st.session_state:
+    st.session_state.messages = []
+
+for msg in st.session_state.messages:
+    st.chat_message(msg["role"]).write(
+        msg["content"])
+
